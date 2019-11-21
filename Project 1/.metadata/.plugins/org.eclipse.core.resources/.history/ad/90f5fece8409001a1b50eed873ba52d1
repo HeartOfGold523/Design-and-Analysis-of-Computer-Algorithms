@@ -1,0 +1,77 @@
+public class BubbleSort implements SortInterface
+{
+	int count = 0;
+    long timeStart = 0;
+    long timeEnd = 0;
+    
+    /* * *
+     * Iterative version of Bubble Sort
+     * * */
+    public int[] iterativeSort(int[] a) throws UnsortedException
+    {
+    	timeStart = System.nanoTime();
+    	
+    	int n = a.length;
+    	for (int i = 0; i < n - 1; i++)
+    	{
+    		for (int j = 0; j < n - i - 1; j++)
+    		{
+    			//increment count to count this check
+    			count++;
+    			if (a[j] > a[j+1])
+                { 
+                    // increment count to swap a[j+1] and a[i]
+    				count++;
+                    int temp = a[j]; 
+                    a[j] = a[j+1]; 
+                    a[j+1] = temp; 
+                }
+    		}
+    	}
+    	
+    	timeEnd = System.nanoTime();
+    	checkSortedArray(a);
+    	return a;
+    }
+    
+    
+    /* * *
+     * Iterative version of Bubble Sort
+     * * */
+    public int[] recursiveSort(int[] a) throws UnsortedException
+    {
+    	
+    }
+    
+    private void checkSortedArray(int[] list) throws UnsortedException
+    {
+        for (int i = 0; i < list.length - 1; i++)
+        {
+            if (list[i] > list[i + 1])
+            {
+                for (int j = 0; i < list.length - 1; j++)
+                {
+                    System.out.println(" " + list[j]);
+                }
+                throw new UnsortedException("The array was not sorted correctly: \n" +
+                        list[i] + " at index " + i + " and " + list[i + 1] + " at index " + (i + 1));
+            }
+        }
+    }
+    
+    public int getCount()
+    {
+        int result = count;
+        count = 0;
+        return result;
+    }
+
+    public long getTime()
+    {
+        long time = timeEnd - timeStart;
+        timeEnd = 0;
+        timeStart = 0;
+        return time;
+    }
+    
+}
