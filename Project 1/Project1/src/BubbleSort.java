@@ -5,7 +5,7 @@ public class BubbleSort implements SortInterface
     long timeEnd = 0;
     
     //critical operations we are counting in bubble sort is:
-    // 1) checking to see if 2 indices in the array must be swaped
+    // 1) checking to see if 2 indices in the array must be swapped
     // 2) actually making the swap if needed
     
     //Utility function to swap values at 2 indices in array
